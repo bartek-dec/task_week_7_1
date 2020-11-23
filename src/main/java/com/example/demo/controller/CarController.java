@@ -8,10 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -57,14 +54,14 @@ public class CarController {
     @GetMapping("/edit/{id}")
     public String displayEditForm(@PathVariable Long id, Model model) {
         Car foundCar = carDao.findById(id);
-        model.addAttribute("foundCar", foundCar);
+        model.addAttribute("car", foundCar);
         return "edit";
     }
 
     @PostMapping("/edit")
     public String updateCar(@Validated Car car, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("foundCar", car);
+            model.addAttribute("car", car);
             return "edit";
         }
         carDao.updateCar(car);

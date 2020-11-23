@@ -42,7 +42,7 @@
 
     <div class="container_form">
 
-        <form th:action="@{/edit}" th:object="${foundCar}" method="post">
+        <form th:action="@{/edit}" th:object="${car}" method="post">
             <div class="form-group">
                 <input class="form-control" id="exampleFormControlInput0" type="hidden" th:field="*{id}">
             </div>
